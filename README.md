@@ -1,1 +1,1 @@
-Collection of desktops in a docker environmnet
+Collection of desktops in a docker environment
