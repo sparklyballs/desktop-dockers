@@ -27,6 +27,7 @@ apt-add-repository ppa:ubuntu-mate-dev/ppa && \
 apt-add-repository ppa:ubuntu-mate-dev/trusty-mate && \
 apt-get update && \
 apt-get install -y --force-yes --no-install-recommends xdg-utils python wget openjdk-7-jre supervisor sudo nano net-tools mate-desktop-environment-core x11vnc xvfb gtk2-engines-murrine ttf-ubuntu-font-family  && \
+apt-get install -y xrdp && \
 
 # create ubuntu user
 useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
@@ -37,7 +38,7 @@ usermod -u 99 ubuntu && \
 usermod -g 100 ubuntu && \
 
 # fetch and install calibre to /home/ubuntu
-wget --no-check-certificate -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('/home/ubuntu/calibre-bin', True)" && \
+wget --no-check-certificate -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('/home/ubuntu/', True)" && \
 
 
 # swap in modified xrdp.ini
