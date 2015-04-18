@@ -23,13 +23,10 @@ chmod +x /etc/my_init.d/firstrun.sh && \
 
 # update apt and install dependencies
 mv /root/excludes /etc/dpkg/dpkg.cfg.d/excludes && \
-add-apt-repository ppa:otto-kesselgulasch/gimp && \
 apt-add-repository ppa:ubuntu-mate-dev/ppa && \
 apt-add-repository ppa:ubuntu-mate-dev/trusty-mate && \
 apt-get update && \
-apt-get install -y --force-yes --no-install-recommends wget openjdk-7-jre supervisor sudo nano net-tools mate-desktop-environment-core x11vnc xvfb gtk2-engines-murrine ttf-ubuntu-font-family  && \
-apt-get install -y xrdp gimp && \
-
+apt-get install -y --force-yes --no-install-recommends xdg-utils python wget openjdk-7-jre supervisor sudo nano net-tools mate-desktop-environment-core x11vnc xvfb gtk2-engines-murrine ttf-ubuntu-font-family  && \
 
 # create ubuntu user
 useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
@@ -38,6 +35,9 @@ echo "ubuntu:PASSWD" | chpasswd && \
 # set user ubuntu to same uid and guid as nobody:users in unraid
 usermod -u 99 ubuntu && \
 usermod -g 100 ubuntu && \
+
+# fetch and install calibre to /home/ubuntu
+wget --no-check-certificate -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('/home/ubuntu/calibre-bin', True)" && \
 
 
 # swap in modified xrdp.ini
