@@ -234,6 +234,9 @@
   </keybind>
 
   <!-- Keybindings for windows -->
+  <keybind key="A-F12">
+  <action name="ToggleFullscreen"/>
+</keybind>
   <keybind key="A-F4">
     <action name="Close"/>
   </keybind>
