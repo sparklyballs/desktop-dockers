@@ -1,0 +1,7 @@
+<configs>
+    <config name="HandBrake" protocol="rdp">
+        <param name="hostname" value="127.0.0.1" />
+        <param name="port" value="3389" />
+        <param name="color-depth" value="16" />
+    </config>
+</configs>
