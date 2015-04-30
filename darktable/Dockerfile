@@ -53,8 +53,8 @@ mv /root/sesman.ini /etc/xrdp/sesman.ini && \
 mkdir -p /etc/guacamole && \
 mv /root/guacamole.properties /etc/guacamole/guacamole.properties && \
 mv /root/noauth-config.xml /etc/guacamole/noauth-config.xml && \
-mv  /root/rc.xml /nobody/.config/openbox/rc.xml
-chown nobody:users /nobody/.config/openbox/rc.xml
+mv  /root/rc.xml /nobody/.config/openbox/rc.xml && \
+chown nobody:users /nobody/.config/openbox/rc.xml && \
 
 # install tomcat and guacamole
 mkdir -p /var/cache/tomcat7 && \
