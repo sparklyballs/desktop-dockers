@@ -54,7 +54,9 @@ mkdir -p /etc/guacamole && \
 mv /root/guacamole.properties /etc/guacamole/guacamole.properties && \
 mv /root/noauth-config.xml /etc/guacamole/noauth-config.xml && \
 mv  /root/rc.xml /nobody/.config/openbox/rc.xml && \
+mv /root/autostart /nobody/.config/openbox/autostart && \
 chown nobody:users /nobody/.config/openbox/rc.xml && \
+chown -R nobody:users /config /usr/bin/darktable /nobody && \
 
 # install tomcat and guacamole
 mkdir -p /var/cache/tomcat7 && \
