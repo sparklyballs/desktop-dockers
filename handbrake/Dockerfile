@@ -38,7 +38,22 @@ echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe r
 add-apt-repository ppa:no1wantdthisname/openjdk-fontfix && \
 add-apt-repository ppa:stebbins/handbrake-releases && \
 apt-get update -qq && \
-apt-get install -qy --force-yes --no-install-recommends wget unzip vnc4server x11-xserver-utils openbox xfonts-base xfonts-100dpi xfonts-75dpi libfuse2 xrdp openjdk-7-jre libossp-uuid-dev libpng12-dev libfreerdp-dev libcairo2-dev tomcat7 && \
+apt-get install -qy --force-yes --no-install-recommends \
+wget \
+unzip \
+vnc4server \
+x11-xserver-utils \
+openbox xfonts-base \
+xfonts-100dpi \
+xfonts-75dpi \
+libfuse2 xrdp \
+openjdk-7-jre \
+libossp-uuid-dev \
+libpng12-dev \
+libfreerdp-dev \
+libcairo2-dev \
+tomcat7 && \
+
 apt-get install -qy handbrake && \
 
 # fix startup files etc....
