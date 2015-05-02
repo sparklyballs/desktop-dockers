@@ -71,7 +71,7 @@ mv /root/noauth-config.xml /etc/guacamole/noauth-config.xml && \
 mv  /root/rc.xml /nobody/.config/openbox/rc.xml && \
 mv /root/autostart /nobody/.config/openbox/autostart && \
 chown nobody:users /nobody/.config/openbox/rc.xml && \
-chown -R nobody:users /config /nobody /usr/bin/handbrake && \
+chown -R nobody:users /config /nobody /usr/bin/ghb && \
 
 # install tomcat and guacamole
 mkdir -p /var/cache/tomcat7 && \

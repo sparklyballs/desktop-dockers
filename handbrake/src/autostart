@@ -1,2 +1,2 @@
 xsetroot -solid black -cursor_name left_ptr
-/usr/bin/handbrake
+/usr/bin/ghb
