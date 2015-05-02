@@ -54,7 +54,7 @@ libfreerdp-dev \
 libcairo2-dev \
 tomcat7 && \
 
-apt-get install -qy handbrake-gtk && \
+apt-get install -qy gnome-themes-standard handbrake-gtk && \
 
 # fix startup files etc....
 mv /root/00_config.sh /etc/my_init.d/00_config.sh && \
