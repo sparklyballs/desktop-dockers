@@ -2,7 +2,7 @@ FROM hurricane/dockergui:xvnc
 
 # set variables
 # User/Group Id gui app will be executed as default are 99 and 100
-ENV USER_ID=99 GROUP_ID=100 APP_NAME="HandBrake" WIDTH=1280 HEIGHT=720
+ENV USER_ID=99 GROUP_ID=100 APP_NAME="HandBrake" WIDTH=1280 HEIGHT=720 TERM=xterm
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
