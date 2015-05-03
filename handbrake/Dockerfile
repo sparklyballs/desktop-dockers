@@ -11,7 +11,7 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # repositories
-echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe restricted' > /etc/apt/sources.list && \
+RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe restricted' > /etc/apt/sources.list && \
 echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restricted' >> /etc/apt/sources.list && \
 add-apt-repository ppa:stebbins/handbrake-releases && \
 
