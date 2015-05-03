@@ -21,5 +21,13 @@ cd /tmp && \
 wget http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.10.3/FileZilla_3.10.3_x86_64-linux-gnu.tar.bz2 && \
 tar -xvf FileZilla_3.10.3_x86_64-linux-gnu.tar.bz2 && \
 mv FileZilla3 /nobody && \
-chown -R nobody:users /nobody
+chown -R nobody:users /nobody && \
+
+# clean up
+apt-get clean && \
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+/usr/share/man /usr/share/groff /usr/share/info \
+/usr/share/lintian /usr/share/linda /var/cache/man && \
+(( find /usr/share/doc -depth -type f ! -name copyright|xargs rm || true )) && \
+(( find /usr/share/doc -empty|xargs rmdir || true ))
 
