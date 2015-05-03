@@ -13,6 +13,8 @@ ADD src/ /
 RUN mkdir /etc/service/inotify && \
 mv /inotify.sh /etc/service/inotify/run && \
 chmod +x /etc/service/inotify/run && \
+mv /copy-script.sh /etc/my_init.d/copy-script.sh && \
+chmod +x /etc/my_init.d/copy-script.sh && \
 
 # repositories
 echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe restricted' > /etc/apt/sources.list && \
