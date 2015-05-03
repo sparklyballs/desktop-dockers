@@ -1,6 +1,6 @@
 #!/bin/bash
 chown -R nobody:users /script
-if [ -f "/convert.sh" ]; then
+if [ -f "/script/convert.sh" ]; then
 echo "using existing script, may require editing"
 chown -R nobody:users /script
 else
