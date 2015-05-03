@@ -1,82 +1,28 @@
-FROM phusion/baseimage:0.9.16
-MAINTAINER sparklyballs <sparkly@madeupemail.com>
+FROM hurricane/dockergui:xvnc
 
-# Set correct environment variables
-ENV DEBIAN_FRONTEND=noninteractive HOME="/root" TERM=xterm LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
-
-# set ports
-EXPOSE 8080 3389
+# set variables
+# User/Group Id gui app will be executed as default are 99 and 100
+ENV USER_ID=99 GROUP_ID=100 APP_NAME="DarkTable" WIDTH=1280 HEIGHT=840 TERM=xterm
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
 
-# Add required files that are local
-ADD src/ /root/
+# Add local files
+ADD src/ /
 
-# set config volume
-VOLUME /config
+# start files and config etc....
+RUN mv /rc.xml /nobody/.config/openbox/rc.xml && \
 
-# Set the locale
-RUN locale-gen en_US.UTF-8 && \
-
-# Configure user nobody to match unRAID's settings
-usermod -u 99 nobody && \
-usermod -g 100 nobody && \
-usermod -m -d /nobody nobody && \
-usermod -s /bin/bash nobody && \
-usermod -a -G adm,sudo nobody && \
-echo "nobody:PASSWD" | chpasswd && \
-
-# folders for user nobody
-mkdir /nobody && \
-mkdir -p /nobody/.config/openbox && \
-mkdir /nobody/.cache && \
+# repositories
+echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe restricted' > /etc/apt/sources.list && \
+echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restricted' >> /etc/apt/sources.list && \
+add-apt-repository ppa:pmjdebruijn/darktable-release && \
 
 # update apt and install dependencies
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main universe restricted' > /etc/apt/sources.list && \
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe restricted' >> /etc/apt/sources.list && \
-add-apt-repository ppa:no1wantdthisname/openjdk-fontfix && \
-add-apt-repository ppa:pmjdebruijn/darktable-release && \
-apt-get update -qq && \
-apt-get install -qy --force-yes --no-install-recommends wget unzip vnc4server x11-xserver-utils openbox xfonts-base xfonts-100dpi xfonts-75dpi libfuse2 xrdp openjdk-7-jre libossp-uuid-dev libpng12-dev libfreerdp-dev libcairo2-dev tomcat7 && \
-apt-get install -qy darktable && \
-
-# fix startup files etc....
-mv /root/00_config.sh /etc/my_init.d/00_config.sh && \
-mv /root/service/* /etc/service/ && \
-rm -rf /root/service && \
-chmod -R +x /etc/service/ /etc/my_init.d/ /etc/xrdp/startwm.sh && \
-
-# fix up config files etc....
-mv /root/xrdp.ini /etc/xrdp/xrdp.ini && \
-mv /root/sesman.ini /etc/xrdp/sesman.ini && \
-mkdir -p /etc/guacamole && \
-mv /root/guacamole.properties /etc/guacamole/guacamole.properties && \
-mv /root/noauth-config.xml /etc/guacamole/noauth-config.xml && \
-mv  /root/rc.xml /nobody/.config/openbox/rc.xml && \
-mv /root/autostart /nobody/.config/openbox/autostart && \
-chown nobody:users /nobody/.config/openbox/rc.xml && \
-chown -R nobody:users /config /usr/bin/darktable /nobody && \
-
-# install tomcat and guacamole
-mkdir -p /var/cache/tomcat7 && \
-mkdir -p /var/lib/guacamole/classpath && \
-mkdir -p /usr/share/tomcat7/.guacamole && \
-mkdir -p /usr/share/tomcat7-root/.guacamole && \
-mkdir -p /root/.guacamole && \
-dpkg -i /root/guacamole/guacamole-server_0.9.6_amd64.deb && \
-ldconfig && \
-cp /root/guacamole/guacamole-0.9.6.war /var/lib/tomcat7/webapps/guacamole.war && \
-cp /root/guacamole/guacamole-auth-noauth-0.9.6.jar /var/lib/guacamole/classpath && \
-rm -rf root/guacamole && \
-ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7/.guacamole/ && \
-ln -s /etc/guacamole/guacamole.properties /usr/share/tomcat7-root/.guacamole/ && \
-ln -s /etc/guacamole/guacamole.properties /root/.guacamole/ && \
-rm -Rf /var/lib/tomcat7/webapps/ROOT && \
-ln -s /var/lib/tomcat7/webapps/guacamole.war /var/lib/tomcat7/webapps/ROOT.war && \
-ln -s /usr/local/lib/freerdp/guacsnd.so /usr/lib/x86_64-linux-gnu/freerdp/ && \ 
-ln -s /usr/local/lib/freerdp/guacdr.so /usr/lib/x86_64-linux-gnu/freerdp/ && \
-
+mv /excludes /etc/dpkg/dpkg.cfg.d/excludes && \
+apt-get update && \
+apt-get install -qy \
+darktable && \
 
 # clean up
 apt-get clean && \
@@ -85,3 +31,4 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 /usr/share/lintian /usr/share/linda /var/cache/man && \
 (( find /usr/share/doc -depth -type f ! -name copyright|xargs rm || true )) && \
 (( find /usr/share/doc -empty|xargs rmdir || true ))
+
