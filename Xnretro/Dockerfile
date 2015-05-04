@@ -11,10 +11,10 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # set 32 bit arch
-#RUN dpkg --add-architecture i386 && \
+RUN dpkg --add-architecture i386 && \
 
 # install XnRetro
-RUN cd /tmp && \
+cd /tmp && \
 wget --directory-prefix=/tmp http://download.xnview.com/XnRetro-linux.tgz && \
 cd /nobody && \
 tar -xvf /tmp/XnRetro-linux.tgz && \
@@ -44,6 +44,9 @@ libxext6:i386 \
 libxml2:i386 \
 libxrender1:i386 \
 zlib1g:i386 \
+lib32z1 \
+lib32ncurses5 \
+lib32bz2-1.0 \
 # and gnome themepack
 gnome-themes-standard && \
 
