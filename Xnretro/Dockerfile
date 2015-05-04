@@ -44,6 +44,7 @@ libxext6:i386 \
 libxml2:i386 \
 libxrender1:i386 \
 zlib1g:i386 \
+# and gnome themepack
 gnome-themes-standard && \
 
 # clean up
