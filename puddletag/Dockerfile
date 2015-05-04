@@ -15,7 +15,6 @@ RUN wget --directory-prefix=/tmp http://sourceforge.net/projects/puddletag/files
 
 # update apt and install dependencies
 apt-get update && \
-python-support python-mutagen python-qt4 python-pyparsing python-configobj libchromaprint-tools
 apt-get install -qy \
 python-support \
 python-mutagen \
