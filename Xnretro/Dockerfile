@@ -11,10 +11,10 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # set 32 bit arch
-RUN dpkg --add-architecture i386 && \
+#RUN dpkg --add-architecture i386 && \
 
 # install XnRetro
-cd /tmp && \
+RUN cd /tmp && \
 wget --directory-prefix=/tmp http://download.xnview.com/XnRetro-linux.tgz && \
 cd /nobody && \
 tar -xvf /tmp/XnRetro-linux.tgz && \
