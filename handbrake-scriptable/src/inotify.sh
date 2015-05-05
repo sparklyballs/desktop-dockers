@@ -1,5 +1,5 @@
 #!/bin/sh
 while inotifywait -r -e create /watch-folder; do
 /bin/bash /script/convert.sh
-echo "Applying sql commands"
+echo "Converting file(s)"
 done
