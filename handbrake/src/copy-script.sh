@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p /nobody/.config/ghb/Convert-Script
+mkdir -p /nobody/.config/ghb/Convert-Script /nobody/.config/ghb/Watch-Folder
 chown -R nobody:users /nobody/.config/ghb
 if [ -f "/nobody/.config/ghb/Convert-Script/convert.sh" ]; then
 echo "using existing script, may require editing"
