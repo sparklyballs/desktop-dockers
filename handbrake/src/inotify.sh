@@ -1,5 +1,5 @@
 #!/bin/sh
 while inotifywait -r -e create /watch-folder; do
-/bin/bash /script/convert.sh
+/bin/bash /nobody/.config/ghb/Convert-Script/convert.sh
 echo "Converting file(s)"
 done
