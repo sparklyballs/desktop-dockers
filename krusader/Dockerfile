@@ -13,10 +13,12 @@ ADD src/ /
 # repositories
 RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe restricted' > /etc/apt/sources.list && \
 echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restricted' >> /etc/apt/sources.list && \
+add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse" && \
+add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse" && \
 
 # install dependencies
 apt-get update && \
-apt-get install -y krusader && \
+apt-get install -y krusader unrar && \
 
 # clean up
 apt-get clean && \
