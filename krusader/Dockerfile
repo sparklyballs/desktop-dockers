@@ -18,7 +18,8 @@ add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates univ
 
 # install dependencies
 apt-get update && \
-apt-get install -y krusader kdiff3 unace lhasa unrar zip p7zip-full rar && \
+apt-get install --no-install-recommends -y krusader && \
+apt-get install -y kdiff3 locate md5deep konsole krename kget unace lhasa unrar zip p7zip-full rar && \
 
 # clean up
 apt-get clean && \
