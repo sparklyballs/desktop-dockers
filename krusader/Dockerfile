@@ -18,7 +18,7 @@ add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates univ
 
 # install dependencies
 apt-get update && \
-apt-get install -y krusader unrar zip p7zip-full && \
+apt-get install -y krusader unrar zip p7zip-full rar && \
 
 # clean up
 apt-get clean && \
