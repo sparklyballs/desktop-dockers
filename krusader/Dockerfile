@@ -18,7 +18,7 @@ add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates univ
 
 # install dependencies
 apt-get update && \
-apt-get install -y krusader unace lhasa unrar zip p7zip-full rar && \
+apt-get install -y krusader kdiff3 unace lhasa unrar zip p7zip-full rar && \
 
 # clean up
 apt-get clean && \
