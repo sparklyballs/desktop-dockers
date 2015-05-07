@@ -1,2 +1,2 @@
 #!/bin/bash
-usr/bin/krusader
+/usr/bin/krusader
