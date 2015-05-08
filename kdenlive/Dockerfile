@@ -17,7 +17,8 @@ echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restrict
 # install dependencies
 apt-get update && \ 
 apt-get install -y \
-kdenlive && \
+kdenlive \
+gxine && \
 
 # clean up
 apt-get clean && \
