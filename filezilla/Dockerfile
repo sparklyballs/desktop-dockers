@@ -22,8 +22,8 @@ libnotify.bin \
 libstdc++6 \
 gnome-themes-standard -y && \
 cd /tmp && \
-wget http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.11.0.1/FileZilla_3.11.0.1_x86_64-linux-gnu.tar.bz2 && \
-tar -xvf FileZilla_3.11.0.1_x86_64-linux-gnu.tar.bz2 && \
+wget http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.11.0.2/FileZilla_3.11.0.2_x86_64-linux-gnu.tar.bz2 && \
+tar -xvf FileZilla_3.11.0.2_x86_64-linux-gnu.tar.bz2 && \
 mv FileZilla3 /nobody && \
 chown -R nobody:users /nobody && \
 
