@@ -16,7 +16,9 @@ echo 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe restrict
 
 # install dependencies
 apt-get update && \ 
-apt-get install -y gnome-themes-standard && \
+apt-get install \
+libnotify.bin \
+gnome-themes-standard -y && \
 cd /tmp && \
 wget http://downloads.sourceforge.net/project/filezilla/FileZilla_Client/3.11.0.1/FileZilla_3.11.0.1_x86_64-linux-gnu.tar.bz2 && \
 tar -xvf FileZilla_3.11.0.1_x86_64-linux-gnu.tar.bz2 && \
