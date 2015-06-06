@@ -1,4 +1,4 @@
-FROM hurricane/dockergui:x11rdp1.2
+FROM hurricane/dockergui:xvnc
 
 # set variables
 # User/Group Id gui app will be executed as default are 99 and 100
