@@ -5,7 +5,7 @@ unrar_exe_path = /usr/bin/unrar
 send_usage_stats = False
 
 [auto]
-install_id = 
+install_id = 043b8d88978c4b7fbd6867902f00b9fd
 last_selected_load_data_style = 0
 last_selected_save_data_style = 0
 last_opened_folder =
