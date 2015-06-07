@@ -3,7 +3,7 @@ mkdir -p /nobody/.ComicTagger
 if [ -f "/nobody/.ComicTagger/settings" ]; then
 echo "settings file in place"
 else
-cp /root/settings /nobody/.ComicTagger/settings
+cp /settings /nobody/.ComicTagger/settings
 fi
 # sanitize COMICCODE for white space
 SANEDCOMICCODE0=$COMICCODE
