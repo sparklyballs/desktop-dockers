@@ -49,7 +49,7 @@ pip install pillow configparser && \
 pip install --pre --allow-external comictagger --allow-unverified comictagger comictagger && \
 
 # set additional config files
-mv /root/000-add-in-config.sh /etc/my_init.d/000-add-in-config.sh && \
+mv /000-add-in-config.sh /etc/my_init.d/000-add-in-config.sh && \
 chmod +x /etc/my_init.d/000-add-in-config.sh && \
 
 # clean up
