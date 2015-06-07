@@ -1,0 +1,64 @@
+[settings]
+check_for_new_version = True
+rar_exe_path = /usr/bin/rar
+unrar_exe_path = /usr/bin/unrar
+send_usage_stats = False
+
+[auto]
+install_id = 
+last_selected_load_data_style = 0
+last_selected_save_data_style = 0
+last_opened_folder =
+last_main_window_width = 0
+last_main_window_height = 0
+last_main_window_x = 0
+last_main_window_y = 0
+last_form_side_width = -1
+last_list_side_width = -1
+last_filelist_sorted_column = -1
+last_filelist_sorted_order = 0
+
+[identifier]
+id_length_delta_thresh = 5
+id_publisher_blacklist = Panini Comics, Abril, Planeta DeAgostini, Editorial Televisa
+
+[dialogflags]
+ask_about_cbi_in_rar = True
+show_disclaimer = False
+dont_notify_about_this_version =
+ask_about_usage_stats = False
+show_no_unrar_warning = True
+
+[filenameparser]
+parse_scan_info = True
+
+[comicvine]
+use_series_start_as_volume = False
+clear_form_before_populating_from_cv = False
+remove_html_tables = False
+cv_api_key = 
+
+[cbl_transform]
+assume_lone_credit_is_primary = False
+copy_characters_to_tags = False
+copy_teams_to_tags = False
+copy_locations_to_tags = False
+copy_storyarcs_to_tags = False
+copy_notes_to_comments = False
+copy_weblink_to_comments = False
+apply_cbl_transform_on_cv_import = False
+apply_cbl_transform_on_bulk_operation = False
+
+[rename]
+rename_template = %series% #%issue% (%year%)
+rename_issue_number_padding = 3
+rename_use_smart_string_cleanup = True
+rename_extension_based_on_archive = True
+
+[autotag]
+save_on_low_confidence = False
+dont_use_year_when_identifying = False
+assume_1_if_no_issue_num = False
+ignore_leading_numbers_in_filename = False
+remove_archive_after_successful_match = False
+wait_and_retry_on_rate_limit = False
