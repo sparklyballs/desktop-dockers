@@ -46,6 +46,7 @@ make && \
 make install && \
 
 # install pip packages
+pip uninstall pillow -y && \
 pip install pillow configparser && \
 pip install --pre --allow-external comictagger --allow-unverified comictagger comictagger && \
 
