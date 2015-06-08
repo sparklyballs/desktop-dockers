@@ -19,6 +19,7 @@ python \
 python-dev \
 python-pip \
 python-qt4 \
+libtiff5 \
 libtiff5-dev \
 libjpeg8-dev \
 zlib1g-dev \
