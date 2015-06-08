@@ -64,6 +64,6 @@ git clone https://github.com/davide-romanini/comictagger.git && \
 mv /000-add-in-config.sh /etc/my_init.d/000-add-in-config.sh && \
 chmod +x /etc/my_init.d/000-add-in-config.sh && \
 
-# clean up
+## clean up
 apt-get clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
