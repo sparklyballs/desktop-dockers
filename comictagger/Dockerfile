@@ -33,6 +33,7 @@ unzip \
 unrar \
 rar \
 zip \
+python-imaging \
 python-bs4 -y && \
 
 # build openjpeg2 support for pillow
