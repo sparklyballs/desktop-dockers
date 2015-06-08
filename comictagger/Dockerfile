@@ -17,8 +17,7 @@ python \
 python-dev \
 python-pip \
 python-qt4 \
-libtiff5 \
-libtiff5-dev \
+libtiff4-dev \
 libjpeg8-dev \
 zlib1g-dev \
 libfreetype6-dev \
