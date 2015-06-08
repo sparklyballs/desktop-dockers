@@ -10,10 +10,8 @@ CMD ["/sbin/my_init"]
 # Add local files
 ADD src/ /
 
-# add repositories, update apt and install dependencies
-RUN add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse" && \
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse" && \
-apt-get update -qq && \
+# update apt and install dependencies
+RUN apt-get update -qq && \
 apt-get install \
 python \
 python-dev \
@@ -30,9 +28,7 @@ tcl8.6-dev \
 tk8.6-dev \
 python-tk \
 cmake \
-unzip \
 wget \
-zip \
 git-core \
 python-bs4 -y && \
 
