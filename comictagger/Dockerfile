@@ -20,7 +20,8 @@ python-dev \
 python-pip \
 python-qt4 \
 libtiff5-dev \
-libjpeg8-dev \
+libjpeg62 \ 
+libjpeg62-dev \
 zlib1g-dev \
 libfreetype6-dev \
 liblcms2-dev \
@@ -46,8 +47,8 @@ make && \
 make install && \
 
 # install pip packages
-pip uninstall pillow -y && \
-pip install pillow configparser && \
+pip install PIL --allow-external PIL --allow-unverified PIL && \
+pip install configparser && \
 pip install --pre --allow-external comictagger --allow-unverified comictagger comictagger && \
 
 # set additional config files
