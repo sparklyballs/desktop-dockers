@@ -30,6 +30,7 @@ cmake \
 wget \
 git-core \
 python-bs4 -y && \
+apt-get install -f -y && \
 
 # build openjpeg2 support for pillow
 cd /tmp && \
