@@ -17,7 +17,6 @@ apt-get install \
 python \
 python-dev \
 liblcms1-dev \
-libwebp-dev \
 libtiff5-dev \
 libjpeg8-dev \
 libjpeg-turbo8-dev \
@@ -25,10 +24,6 @@ libjpeg-dev \
 libfreetype6 \
 libfreetype6-dev \
 zlib1g-dev \
-libwebp-dev \
-tcl8.6-dev \
-tk8.6-dev \
-python-tk \
 python-pip -y && \
 
 # install PIL
@@ -51,11 +46,10 @@ git-core -y && \
 pip uninstall pil -y && \
 apt-get update -qq && \
 apt-get install \
-libtiff4-dev \
-libjpeg8-dev \
-zlib1g-dev \
-libfreetype6-dev \
 liblcms2-dev \
+tcl8.6-dev \
+tk8.6-dev \
+python-tk \
 cmake \
 libwebp-dev -y && \
 
