@@ -46,8 +46,20 @@ python-qt4 \
 python-bs4 \
 git-core -y && \
 
+# uninstall pil and install pillow dependencies
+pip uninstall pil -y && \
+apt-get update -qq && \
+apt-get install \
+libtiff4-dev \
+libjpeg8-dev \
+zlib1g-dev \
+libfreetype6-dev \
+liblcms1-dev \
+libwebp-dev -y && \
+
 # install pip packages
 pip install natsort PyPDF2 unrar configparser && \
+pip install pillow && \
 
 # install unrar libraries
 cd /tmp && \
