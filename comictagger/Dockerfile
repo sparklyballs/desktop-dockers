@@ -11,20 +11,33 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # update apt and install dependencies
-RUN mv /sources.list /etc/apt/sources.list && \ 
-apt-get update -qq && \
+RUN apt-get update -qq && \
 apt-get install \
-python \
 python-dev \
 liblcms1-dev \
 libtiff5-dev \
 libjpeg8-dev \
 libjpeg-turbo8-dev \
 libjpeg-dev \
-libfreetype6 \
-libfreetype6-dev \
-zlib1g-dev \
+cmake \
 python-pip -y && \
+
+# build openjpeg2 support
+cd /tmp && \
+wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && \
+tar xzvf openjpeg-2.0.1.tar.gz && \
+cd openjpeg-2.0.1/ && \
+cmake . && \
+make && \
+make install && \
+
+# install unrar libraries
+cd /tmp && \
+wget http://www.rarlab.com/rar/unrarsrc-5.2.7.tar.gz && \
+tar -xvf unrarsrc-5.2.7.tar.gz && \
+cd unrar && \
+make lib && \
+make install-lib && \
 
 # install PIL
 ln -s /usr/include/freetype2 /usr/local/include/freetype && \
@@ -50,29 +63,11 @@ liblcms2-dev \
 tcl8.6-dev \
 tk8.6-dev \
 python-tk \
-cmake \
 libwebp-dev -y && \
-
-# build openjpeg2 support for pillow
-cd /tmp && \
-wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && \
-tar xzvf openjpeg-2.0.1.tar.gz && \
-cd openjpeg-2.0.1/ && \
-cmake . && \
-make && \
-make install && \
 
 # install pip packages
 pip install natsort PyPDF2 unrar configparser && \
 pip install pillow && \
-
-# install unrar libraries
-cd /tmp && \
-wget http://www.rarlab.com/rar/unrarsrc-5.2.7.tar.gz && \
-tar -xvf unrarsrc-5.2.7.tar.gz && \
-cd unrar && \
-make lib && \
-make install-lib && \
 
 # fetch comictagger from source
 cd /opt && \
@@ -81,7 +76,6 @@ git clone https://github.com/davide-romanini/comictagger.git && \
 # set additional config files
 mv /000-add-in-config.sh /etc/my_init.d/000-add-in-config.sh && \
 chmod +x /etc/my_init.d/000-add-in-config.sh && \
-
 
 # clean up
 apt-get clean && \
