@@ -11,7 +11,9 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # update apt and install dependencies
-RUN apt-get update -qq && \
+RUN rm /etc/apt/sources.list && \
+mv /root/sources.list /etc/apt/sources.list && \
+apt-get update -qq && \
 apt-get install \
 python \
 python-dev \
@@ -30,7 +32,6 @@ cmake \
 wget \
 git-core \
 python-bs4 -y && \
-apt-get install -f -y && \
 
 # build openjpeg2 support for pillow
 cd /tmp && \
