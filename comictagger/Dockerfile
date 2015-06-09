@@ -55,8 +55,18 @@ libtiff4-dev \
 libjpeg8-dev \
 zlib1g-dev \
 libfreetype6-dev \
-liblcms1-dev \
+liblcms2-dev \
+cmake \
 libwebp-dev -y && \
+
+# build openjpeg2 support for pillow
+cd /tmp && \
+wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && \
+tar xzvf openjpeg-2.0.1.tar.gz && \
+cd openjpeg-2.0.1/ && \
+cmake . && \
+make && \
+make install && \
 
 # install pip packages
 pip install natsort PyPDF2 unrar configparser && \
