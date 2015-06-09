@@ -10,12 +10,19 @@ CMD ["/sbin/my_init"]
 # Add local files
 ADD src/ /
 
+<<<<<<< HEAD
 # update apt
 
 RUN apt-get update -qq && \
 
 # install PIL dependencies
 apt-get install \ 
+=======
+# update apt and install dependencies
+RUN apt-get update -qq && \
+apt-get install \
+python \
+>>>>>>> c278daa7c8a2b7844977c4592e06da5c8ce7193b
 python-dev \
 liblcms1-dev \
 libwebp-dev \
