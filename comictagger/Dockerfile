@@ -10,39 +10,48 @@ CMD ["/sbin/my_init"]
 # Add local files
 ADD src/ /
 
-# update apt and install dependencies
-RUN rm /etc/apt/sources.list && \
-mv /sources.list /etc/apt/sources.list && \
-apt-get update -qq && \
-apt-get install \
-python \
+# update apt
+
+RUN apt-get update -qq && \
+
+# install PIL dependencies
+apt-get install \ 
 python-dev \
-python-pip \
-python-qt4 \
+liblcms1-dev \
+libwebp-dev \
 libtiff5-dev \
 libjpeg8-dev \
-zlib1g-dev \
+libjpeg-turbo8-dev \
+libjpeg-dev \
+libfreetype6 \
 libfreetype6-dev \
-liblcms2-dev \
+zlib1g-dev \
 libwebp-dev \
 tcl8.6-dev \
 tk8.6-dev \
 python-tk \
-cmake \
-wget \
-git-core \
-python-bs4 -y && \
+python-pip -y && \
 
-# build openjpeg2 support for pillow
-cd /tmp && \
-wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && \
-tar xzvf openjpeg-2.0.1.tar.gz && \
-cd openjpeg-2.0.1/ && \
-cmake . && \
-make && \
-make install && \
+# install PIL
+ln -s /usr/include/freetype2 /usr/local/include/freetype && \
+ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib && \
+ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib && \
+ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib && \
+ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib && \
+pip install PIL --allow-external PIL --allow-unverified PIL && \
 
-# install unrar libraries
+
+# install comictagger dependencies and git-core
+apt-get update -qq && \
+apt-get install \
+python-qt4 \
+python-bs4 \
+git-core -y && \
+
+# install pip packages
+pip install natsort PyPDF2 unrar configparser && \
+
+# install unrar libraries
 cd /tmp && \
 wget http://www.rarlab.com/rar/unrarsrc-5.2.7.tar.gz && \
 tar -xvf unrarsrc-5.2.7.tar.gz && \
@@ -50,10 +59,7 @@ cd unrar && \
 make lib && \
 make install-lib && \
 
-# install pip packages
-pip install natsort PyPDF2 unrar pillow configparser && \
-
-# fetch comictagger from source
+# fetch comictagger from source
 cd /opt && \
 git clone https://github.com/davide-romanini/comictagger.git && \
 
@@ -61,6 +67,8 @@ git clone https://github.com/davide-romanini/comictagger.git && \
 mv /000-add-in-config.sh /etc/my_init.d/000-add-in-config.sh && \
 chmod +x /etc/my_init.d/000-add-in-config.sh && \
 
-## clean up
+
+# clean up
 apt-get clean && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+
