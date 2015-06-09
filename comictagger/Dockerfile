@@ -11,7 +11,8 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # update apt and install dependencies
-RUN apt-get update -qq && \
+RUN mv /sources.list /etc/apt/sources.list && \ 
+apt-get update -qq && \
 apt-get install \
 python \
 python-dev \
