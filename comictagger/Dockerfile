@@ -11,7 +11,9 @@ CMD ["/sbin/my_init"]
 ADD src/ /
 
 # update apt and install dependencies
-RUN apt-get update -qq && \
+RUN add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse" && \
+add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse" && \
+apt-get update -qq && \
 apt-get install \
 python-dev \
 liblcms1-dev \
@@ -20,7 +22,9 @@ libjpeg8-dev \
 libjpeg-turbo8-dev \
 libjpeg-dev \
 cmake \
-python-pip -y && \
+python-pip \
+rar \
+unrar -y && \
 
 # build openjpeg2 support
 cd /tmp && \
