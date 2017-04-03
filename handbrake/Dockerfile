@@ -12,7 +12,7 @@ ADD src/ /
 # startup file. Use coppit's monitoring script from the inotify-command container. Revision-lock to a specific version
 # to avoid any surprises.
 RUN wget -O /runas.sh \
-  'https://raw.githubusercontent.com/coppit/docker-inotify-command/d0b25a4ed40582f5e2d21282c32c58164495c07b/runas.sh' && \
+  'https://raw.githubusercontent.com/coppit/docker-inotify-command/1401a636bbc9369141d0d32ac7b80c2bf7fcdbcb/runas.sh' && \
 chmod +x /runas.sh && \
 wget -O /monitor.py \
   'https://raw.githubusercontent.com/coppit/docker-inotify-command/1401a636bbc9369141d0d32ac7b80c2bf7fcdbcb/monitor.py' && \
