@@ -11,7 +11,7 @@ PRESET=Ipad
 
 ##### DO NOT CHANGE ANYTHING BELOW HERE ###############
 
-SRC=/nobody/.config/ghb/Watch-Folder
+SRC=/Watch
 DEST=/Output
 HANDBRAKE_CLI=HandBrakeCLI
 

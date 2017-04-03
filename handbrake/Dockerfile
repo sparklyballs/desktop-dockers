@@ -9,8 +9,16 @@ CMD ["/sbin/my_init"]
 # Add local files
 ADD src/ /
 
-# startup file
-RUN mkdir /etc/service/inotify && \
+# startup file. Use coppit's monitoring script from the inotify-command container. Revision-lock to a specific version
+# to avoid any surprises.
+RUN wget -O /runas.sh \
+  'https://raw.githubusercontent.com/coppit/docker-inotify-command/1401a636bbc9369141d0d32ac7b80c2bf7fcdbcb/runas.sh' && \
+chmod +x /runas.sh && \
+wget -O /monitor.py \
+  'https://raw.githubusercontent.com/coppit/docker-inotify-command/1401a636bbc9369141d0d32ac7b80c2bf7fcdbcb/monitor.py' && \
+sed -i 's/^RUNAS.*/RUNAS = "\/runas.sh"/' /monitor.py && \
+chmod +x /monitor.py && \
+mkdir /etc/service/inotify && \
 mv /inotify.sh /etc/service/inotify/run && \
 chmod +x /etc/service/inotify/run && \
 mv /copy-script.sh /etc/my_init.d/copy-script.sh && \
@@ -28,7 +36,10 @@ apt-get install -qy \
 handbrake-gtk \
 handbrake-cli \
 gnome-themes-standard \ 
-inotify-tools && \
+python3-setuptools && \
+
+# install watchdog module for Python3
+easy_install3 watchdog && \
 
 # clean up
 apt-get clean && \
@@ -37,3 +48,7 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 /usr/share/lintian /usr/share/linda /var/cache/man && \
 (( find /usr/share/doc -depth -type f ! -name copyright|xargs rm || true )) && \
 (( find /usr/share/doc -empty|xargs rmdir || true ))
+
+VOLUME ["/Movies", "/Watch", "/Output", "/nobody/.config/ghb"]
+
+EXPOSE 3389
