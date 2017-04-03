@@ -23,7 +23,7 @@ for FILE in `ls $SRC`
 do
         # Hash the file details for some privacy. Also hash the inode number, since sometimes people will want to
         # re-encode the same file by placing it back in the dir.
-        file_hash=$(stat -c '%i %s %n' "$FILE" | md5sum | awk '{print $1}')
+        file_hash=$(stat -c '%i %s %n' "$SRC/$FILE" | md5sum | awk '{print $1}')
 
         if grep -q "$file_hash" "$FILE_LIST"; then continue; fi
 
