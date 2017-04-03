@@ -50,3 +50,5 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 (( find /usr/share/doc -empty|xargs rmdir || true ))
 
 VOLUME ["/Watch", "/Output", "/nobody/.config/ghb"]
+
+EXPOSE 3389
