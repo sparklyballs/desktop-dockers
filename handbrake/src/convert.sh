@@ -26,6 +26,11 @@ do
 
         $HANDBRAKE_CLI -i $SRC/$FILE -o $DEST/$filename.$DEST_EXT --preset $PRESET
 
+        PID=$!
+        # This might fail if the user has not provided --cap-add=CAP_SYS_NICE to the container. So ignore failures here.
+        renice 19 $PID
+        wait $PID
+
 chown nobody:users $DEST/$filename.$DEST_EXT
 
 done
