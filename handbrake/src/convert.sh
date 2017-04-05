@@ -20,12 +20,12 @@ HANDBRAKE_CLI=HandBrakeCLI
 IFS=$(echo -en "\n\b")
 for FILE in `ls $SRC`
 do
-        filename=$(basename $FILE)
+        filename=$(basename "$FILE")
         extension=${filename##*.}
         filename=${filename%.*}
 
-        $HANDBRAKE_CLI -i $SRC/$FILE -o $DEST/$filename.$DEST_EXT --preset $PRESET
+        $HANDBRAKE_CLI -i "$SRC/$FILE" -o "$DEST/$filename.$DEST_EXT" --preset "$PRESET"
 
-chown nobody:users $DEST/$filename.$DEST_EXT
+        chown nobody:users "$DEST/$filename.$DEST_EXT"
 
 done
